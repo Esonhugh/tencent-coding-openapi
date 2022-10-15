@@ -1,7 +1,7 @@
 package config
 
 import (
-	"fast_cli_template/utils/Error"
+	"github.com/esonhugh/tencent-coding-openapi/utils/Error"
 	"github.com/spf13/viper"
 )
 

@@ -1,12 +1,12 @@
 package version
 
 import (
-	"fast_cli_template/cmd"
-	"fast_cli_template/utils/Print"
+	"github.com/esonhugh/tencent-coding-openapi/cmd"
+	"github.com/esonhugh/tencent-coding-openapi/utils/Print"
 	"github.com/spf13/cobra"
 )
 
-var version = "1.0"
+var version = "0.1"
 
 // version module
 
@@ -22,9 +22,9 @@ var SubCmd = &cobra.Command{
 	Long:  "输出版本 (Print the version number)",
 	Run: func(cmd *cobra.Command, args []string) {
 		data := [][]string{
-			{version},
+			{version, "Esonhugh"},
 		}
-		var header = []string{"当前版本 (Version)"}
+		var header = []string{"当前版本 (Version)", "作者 (Author)"}
 		var td = Print.Table{
 			Header: header,
 			Body:   data}

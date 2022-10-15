@@ -1,16 +1,17 @@
 package cmd
 
 import (
-	"fast_cli_template/utils/log"
+	"github.com/esonhugh/tencent-coding-openapi/utils/log"
 	cc "github.com/ivanpirog/coloredcobra"
 	"github.com/spf13/cobra"
 	"os"
 )
 
 var RootCmd = &cobra.Command{
-	Use:   "root",
-	Short: "",
-	Long: `
+	Use:   "codingcli",
+	Short: "codingCli",
+	Long: `Hi, There is CodingCli.
+[+] Coding Cli is an Cli Tool which involved SDK implementation of Coding Platform APIs.
 `,
 	PersistentPostRun: func(cmd *cobra.Command, args []string) {
 		log.Init(logLevel)
@@ -20,10 +21,11 @@ var RootCmd = &cobra.Command{
 	},
 }
 
-var logLevel string
+var logLevel, configFile string
 
 func init() {
 	RootCmd.PersistentFlags().StringVar(&logLevel, "logLevel", "info", "设置日志等级 (Set log level) [trace|debug|info|warn|error|fatal|panic]")
+	RootCmd.PersistentFlags().StringVar(&configFile, "config", "coding.yaml", "设置全局配置文件 (Set config file)")
 	RootCmd.CompletionOptions.DisableDefaultCmd = true
 }
 
