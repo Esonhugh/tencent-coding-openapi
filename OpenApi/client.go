@@ -3,6 +3,7 @@ package OpenApi
 import (
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi/baseClient"
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/CommonSDK"
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/ProjectSDK"
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/TeamSDK"
 )
 
@@ -11,6 +12,7 @@ type Client struct {
 	*baseClient.ApiClientBase
 	CommonSDK.CommonSdkClient
 	TeamSDK.TeamSdkClient
+	ProjectSDK.ProjectSdkClient
 }
 
 // Useless SubSDKClient
@@ -25,6 +27,7 @@ func NewClient() *Client {
 		base,
 		CommonSDK.New(base),
 		TeamSDK.New(base),
+		ProjectSDK.New(base),
 	}
 }
 

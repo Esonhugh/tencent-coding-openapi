@@ -8,8 +8,9 @@ import (
 
 const (
 	MacOS_UserAgent   = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Safari/605.1.15"
-	CommonApiEndPoint = "https://e.coding.net/openapi"
-	GetMeApiEndPoint  = "https://e.coding.net/api/me"
+	CommonApiEndPoint = "https://e.coding.net/open-api"
+	// CommonApiEndPoint = "http://127.0.0.1:8080"
+	GetMeApiEndPoint = "https://e.coding.net/api/me"
 )
 
 // ApiClientBase is an Object for Sending requests to the API. The basic implementation of APIClient internal.
@@ -62,5 +63,26 @@ func (a *ApiClientBase) setAuthHeader() *ApiClientBase {
 
 // Do is Warp of dataflow.Gout 's dataflow
 func (a *ApiClientBase) Do() error {
-	return a.setAuthHeader().Gout.DataFlow.Do()
+	return a.setAuthHeader().DataFlow.Do()
+}
+
+type request interface {
+	SetAction()
+}
+
+// Call is Functional func for call any openapi
+func (a *ApiClientBase) Call(request request, response any) (err error) {
+	a.POST(CommonApiEndPoint).SetJSON(request).BindJSON(response)
+	request.SetAction()
+	return a.Do()
+}
+
+// CallAction is Funcational func for call any openapi but with get quesy.
+func (a *ApiClientBase) CallAction(action string, request request, response any) (err error) {
+	a.POST(CommonApiEndPoint).
+		SetQuery(gout.H{
+			"Action": action,
+		}).SetJSON(request).BindJSON(response)
+	request.SetAction()
+	return a.Do()
 }
