@@ -9,8 +9,9 @@ type DescribeProjectByNameRequest struct {
 	ProjectName string `json:"ProjectName"`
 }
 
-func (req *DescribeProjectByNameRequest) SetAction() {
+func (req *DescribeProjectByNameRequest) SetAction() string {
 	req.Action = "DescribeProjectByName"
+	return req.Action
 }
 
 type DescribeProjectByNameResponse struct {

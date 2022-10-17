@@ -7,8 +7,9 @@ type DescribeCodingProjectsRequest struct {
 	PageSize    int    `json:"PageSize"`
 }
 
-func (req *DescribeCodingProjectsRequest) SetAction() {
+func (req *DescribeCodingProjectsRequest) SetAction() string {
 	req.Action = "DescribeCodingProjects"
+	return req.Action
 }
 
 type DescribeCodingProjectsResponse struct {
