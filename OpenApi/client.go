@@ -2,26 +2,26 @@ package OpenApi
 
 import (
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi/baseClient"
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/artifact"         // 制品仓库
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/branch"           // 分支
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/branchProtection" // 保护分支规则
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/cd"               // 持续部署
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/ci"               // 持续集成
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/commit"           // 提交
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/git"              // 代码托管
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/issue"            // 事项
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/iteration"        // 迭代
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/mergeReq"         // 合并请求
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/project"          // 项目
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/projectSetting"   // 项目设置
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/protectedBranch"  // 保护分支
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/release"          // 版本
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/requirement"      // 需求
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/tag"              // 标签
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/team"             // 团队
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/test"             // 测试管理
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/wiki"             // 文档管理
-	"github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/work"             // 工时
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/artifact"         // 制品仓库
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/branch"           // 分支
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/branchProtection" // 保护分支规则
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/cd"               // 持续部署
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/ci"               // 持续集成
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/commit"           // 提交
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/git"              // 代码托管
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/issue"            // 事项
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/iteration"        // 迭代
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/mergeReq"         // 合并请求
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/project"          // 项目
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/projectSetting"   // 项目设置
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/protectedBranch"  // 保护分支
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/release"          // 版本
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/requirement"      // 需求
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/tag"              // 标签
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/team"             // 团队
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/test"             // 测试管理
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/wiki"             // 文档管理
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/work"             // 工时
 )
 
 type Client struct {
