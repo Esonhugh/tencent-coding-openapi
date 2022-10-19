@@ -1,0 +1,17 @@
+package {{.PackageNameLower}}
+
+import	"github.com/esonhugh/tencent-coding-openapi/OpenApi/baseClient"
+
+type {{.PackageName}}Client struct {
+	*baseClient.ApiClientBase
+}
+
+func New(base *baseClient.ApiClientBase) {{.PackageName}}Client {
+	return {{.PackageName}}Client{
+		base,
+	}
+}
+
+func (c *{{.PackageName}}Client) ReInit(base *baseClient.ApiClientBase) {
+	c.ApiClientBase = base
+}

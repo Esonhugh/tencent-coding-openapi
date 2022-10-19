@@ -1,0 +1,17 @@
+package {{.PackageNameLower}}
+
+import	"github.com/esonhugh/tencent-coding-openapi/OpenApi/baseClient"
+
+{{.ReqStruct}}
+func (req *{{.ActionName}}Req) SetAction () string {
+    req.Action = "{{.ActionName}}"
+    return req.Action
+}
+{{if .RespStruct -}}
+{{.RespStruct}}
+{{end -}}
+// {{.ActionName}} {{.ActionDesc}}
+func ({{.PackageNameShort}} *{{.PackageName}}Client) {{.ActionName}} (req {{.ActionName}}Req) (resp {{.ActionName}}Resp, err error) {
+    err = {{.PackageNameShort}}.Call(&req, &resp)
+    return
+}

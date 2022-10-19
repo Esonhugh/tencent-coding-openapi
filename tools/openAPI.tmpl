@@ -1,0 +1,29 @@
+package openAPI
+
+import (
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/baseClient"
+	{{- range $index, $info := .Info}}
+    "github.com/esonhugh/tencent-coding-openapi/openAPI/sdk/{{$info.PackageNameLower}}" // {{$info.PackageDesc}}
+    {{- end}}
+)
+
+type Client struct {
+	*baseClient.ApiClientBase
+	{{- range $index, $info := .Info}}
+    {{$info.PackageNameLower}}.{{$info.PackageName}}Client // {{$info.PackageDesc}}
+    {{- end}}
+}
+
+func NewClient() *Client {
+	base := baseClient.CreateApiClient(nil)
+	return &Client{
+		base,
+	    {{- range $index, $info := .Info}}
+        {{$info.PackageNameLower}}.New(base),
+        {{- end}}
+	}
+}
+
+func (c *Client)SetToken(isOAuth bool, token string) {
+    c.SetAccessToken(isOAuth,token)
+}

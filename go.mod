@@ -5,6 +5,7 @@ go 1.19
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.6
 	github.com/PuerkitoBio/goquery v1.8.0
+	github.com/bashtian/jsonutils v0.0.0-20170422180242-5bf643ef4d9b
 	github.com/guonaihong/gout v0.3.1
 	github.com/ivanpirog/coloredcobra v1.0.1
 	github.com/olekukonko/tablewriter v0.0.5
