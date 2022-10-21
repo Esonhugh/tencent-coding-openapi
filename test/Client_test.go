@@ -18,3 +18,12 @@ func Test_Client(t *testing.T) {
 	}
 	t.Log(meInfo)
 }
+
+func Test_client2(t *testing.T) {
+	c := OpenApi.NewClient()
+	resp, err := c.GetMe()
+	if err != nil {
+		t.Error(err)
+	}
+	t.Log(resp)
+}

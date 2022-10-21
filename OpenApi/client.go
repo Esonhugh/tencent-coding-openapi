@@ -12,6 +12,7 @@ import (
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/issue"            // 事项
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/iteration"        // 迭代
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/mergeReq"         // 合并请求
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/other"            // 其他
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/project"          // 项目
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/projectSetting"   // 项目设置
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/protectedBranch"  // 保护分支
@@ -46,6 +47,7 @@ type Client struct {
 	artifact.ArtifactClient                 // 制品仓库
 	test.TestClient                         // 测试管理
 	wiki.WikiClient                         // 文档管理
+	other.OtherClient                       // 其他
 }
 
 func NewClient() *Client {
@@ -72,6 +74,7 @@ func NewClient() *Client {
 		artifact.New(base),
 		test.New(base),
 		wiki.New(base),
+		other.New(base),
 	}
 }
 

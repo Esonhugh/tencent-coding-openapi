@@ -1,6 +1,8 @@
 package artifact
 
-import "github.com/esonhugh/tencent-coding-openapi/OpenApi/baseClient"
+import (
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/baseClient"
+)
 
 type ArtifactClient struct {
 	*baseClient.ApiClientBase
