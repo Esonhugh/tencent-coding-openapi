@@ -44,3 +44,7 @@ func SpecificInit(file string) {
 	err := GlobalConfig.ReadInConfig()
 	Error.HandleFatal(err)
 }
+
+func Save() error {
+	return GlobalConfig.WriteConfig()
+}

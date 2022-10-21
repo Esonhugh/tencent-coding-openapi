@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"github.com/esonhugh/tencent-coding-openapi/config"
 	"github.com/esonhugh/tencent-coding-openapi/utils/log"
 	cc "github.com/ivanpirog/coloredcobra"
 	"github.com/spf13/cobra"
@@ -14,10 +15,11 @@ var RootCmd = &cobra.Command{
 [+] Coding Cli is an Cli Tool which involved SDK implementation of Coding Platform APIs.
 `,
 	PersistentPostRun: func(cmd *cobra.Command, args []string) {
+		config.SpecificInit(configFile)
 		log.Init(logLevel)
+
 	},
 	Run: func(cmd *cobra.Command, args []string) {
-
 	},
 }
 
