@@ -3,6 +3,7 @@ package config
 import (
 	"github.com/esonhugh/tencent-coding-openapi/utils/Error"
 	"github.com/spf13/viper"
+	"os"
 )
 
 // Config struct is a wrapper of viper
@@ -42,6 +43,9 @@ func SpecificInit(file string) {
 	}
 	GlobalConfig.SetConfigFile(file)
 	err := GlobalConfig.ReadInConfig()
+	if err != nil {
+		_, err = os.Create(file)
+	}
 	Error.HandleFatal(err)
 }
 

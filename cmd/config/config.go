@@ -13,7 +13,7 @@ func init() {
 	cmd.RootCmd.AddCommand(SubCommand)
 }
 
-const (
+var (
 	PersonalToken = "个人 Token (PersonalToken)"
 	OAuthToken    = "OAuth Token (OAuthToken)"
 )
@@ -30,14 +30,14 @@ var SubCommand = &cobra.Command{
 		}, &TokenType)
 		Error.HandleFatal(err)
 
-		config.GlobalConfig.Set("auth.IsOAuth", TokenType == OAuthToken)
+		config.GlobalConfig.Set("auth.is_oauth", TokenType == OAuthToken)
 		var Token string
 		err = survey.AskOne(&survey.Input{
 			Message: "输入 Token (Token)",
 		}, &Token)
 		Error.HandleFatal(err)
 
-		config.GlobalConfig.Set("auth.AccessToken", Token)
+		config.GlobalConfig.Set("auth.access_token", Token)
 		err = config.Save()
 		Error.HandleFatal(err)
 		log.Println("保存成功 (Save Successfully)")

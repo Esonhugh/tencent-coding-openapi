@@ -14,21 +14,20 @@ var RootCmd = &cobra.Command{
 	Long: `Hi, There is CodingCli.
 [+] Coding Cli is an Cli Tool which involved SDK implementation of Coding Platform APIs.
 `,
-	PersistentPostRun: func(cmd *cobra.Command, args []string) {
-		config.SpecificInit(configFile)
-		log.Init(logLevel)
-
+	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 	},
 	Run: func(cmd *cobra.Command, args []string) {
 	},
 }
 
-var logLevel, configFile string
+var LogLevel, ConfigFile string
 
 func init() {
-	RootCmd.PersistentFlags().StringVar(&logLevel, "logLevel", "info", "设置日志等级 (Set log level) [trace|debug|info|warn|error|fatal|panic]")
-	RootCmd.PersistentFlags().StringVar(&configFile, "config", "coding.yaml", "设置全局配置文件 (Set config file)")
+	RootCmd.PersistentFlags().StringVar(&LogLevel, "logLevel", "info", "设置日志等级 (Set log level) [trace|debug|info|warn|error|fatal|panic]")
+	RootCmd.PersistentFlags().StringVar(&ConfigFile, "config", "coding.yaml", "设置全局配置文件 (Set config file)")
 	RootCmd.CompletionOptions.DisableDefaultCmd = true
+	config.SpecificInit(ConfigFile)
+	log.Init(LogLevel)
 }
 
 func Execute() {

@@ -7,6 +7,7 @@ import (
 
 func init() {
 	cmd.RootCmd.AddCommand(SubCmd)
+	SubCmd.AddCommand(SubCmdProject)
 }
 
 // SubCmd is core cobra.Command of subcommand
@@ -15,6 +16,6 @@ var SubCmd = &cobra.Command{
 	Short:   "列出对象 (List Objects)",
 	Long:    "列出对象 (List Objects)",
 	Example: "ls <object>",
-	Run: func(cmd *cobra.Command, args []string) {
+	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 	},
 }
