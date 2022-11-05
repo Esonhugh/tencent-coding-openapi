@@ -38,5 +38,6 @@ var SubCmdProject = &cobra.Command{
 		DB := db.GlobalDatabase.MainDB.Save(p)
 		Error.HandleError(DB.Error)
 		log.Debug("Saved complete")
+		log.Info("Batch Cloned using: `select 'git clone ' || https_url as clone_list from depot_objects;`")
 	},
 }
