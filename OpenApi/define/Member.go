@@ -32,7 +32,7 @@ func (p MemberObjectList) PrintSelf() {
 	t.Print("")
 }
 
-func ConvertToMemberObjectList(p []struct {
+func ConvertMemberObjectList(p []struct {
 	Avatar          string `json:"Avatar"`          // http://e.coding.net/static/fruit_avatar/Fruit-4.png
 	Email           string `json:"Email"`           // blockuser@gmail.com
 	EmailValidation int64  `json:"EmailValidation"` // 1

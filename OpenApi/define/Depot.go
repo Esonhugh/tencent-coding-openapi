@@ -5,8 +5,8 @@ import (
 	"github.com/esonhugh/tencent-coding-openapi/utils/Print"
 )
 
-// DeoptObject define.
-type DeoptObject struct {
+// DepotObject define.
+type DepotObject struct {
 	Id        int    `json:"Id"`
 	Name      string `json:"Name"`
 	HttpsUrl  string `json:"HttpsUrl"`
@@ -15,9 +15,9 @@ type DeoptObject struct {
 	WebUrl    string `json:"WebUrl"`
 	VscType   string `json:"VscType"`
 }
-type DeoptObjectList []DeoptObject
+type DepotObjectList []DepotObject
 
-func (p DeoptObjectList) PrintSelf() {
+func (p DepotObjectList) PrintSelf() {
 	var t Print.Table
 	t.Header = []string{"ID", "Name", "HttpsUrl", "ProjectId", "SshUrl", "WebUrl", "VscType"}
 	for _, each := range p {
@@ -31,7 +31,7 @@ func (p DeoptObjectList) PrintSelf() {
 	}
 	t.Print("")
 }
-func ConvertDeoptObjectList(p []struct {
+func ConvertDepotObjectList(p []struct {
 	Id        int    `json:"Id"`
 	Name      string `json:"Name"`
 	HttpsUrl  string `json:"HttpsUrl"`
@@ -39,8 +39,8 @@ func ConvertDeoptObjectList(p []struct {
 	SshUrl    string `json:"SshUrl"`
 	WebUrl    string `json:"WebUrl"`
 	VscType   string `json:"VscType"`
-}) DeoptObjectList {
-	var r DeoptObjectList
+}) DepotObjectList {
+	var r DepotObjectList
 	for _, v := range p {
 		r = append(r, v)
 	}

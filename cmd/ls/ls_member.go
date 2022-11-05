@@ -11,29 +11,30 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var SubCmdProject = &cobra.Command{
-	Use:   "project",
-	Short: "列出项目 (List Projects)",
-	Long:  "列出项目 (List Projects)",
+var SubCmdMember = &cobra.Command{
+	Use:   "member",
+	Short: "列出成员 (List Members)",
+	Long:  "列出成员 (List Members)",
 	Run: func(cmd *cobra.Command, args []string) {
 		token := config.GlobalConfig.GetString("auth.access_token")
 		isOAuth := config.GlobalConfig.GetBool("auth.is_oauth")
 		Client := OpenApi.NewClient()
 		Client.SetToken(isOAuth, token)
-		resp, err := Client.DescribeCodingProjects(team.DescribeCodingProjectsReq{
+		resp, err := Client.DescribeTeamMembers(team.DescribeTeamMembersReq{
 			PageNumber: 1,
 			PageSize:   10,
 		})
 		Error.HandleError(err)
 		if resp.Response.Data.TotalCount > 10 {
-			resp, err = Client.DescribeCodingProjects(team.DescribeCodingProjectsReq{
+			resp, err = Client.DescribeTeamMembers(team.DescribeTeamMembersReq{
 				PageNumber: 1,
 				PageSize:   resp.Response.Data.TotalCount,
 			})
 		}
 		Error.HandleError(err)
-		p := define.ConvertProjectObjectList(resp.Response.Data.ProjectList)
+		p := define.ConvertMemberObjectList(resp.Response.Data.TeamMembers)
 		p.PrintSelf()
+
 		log.Debug("Saving in Database")
 		DB := db.GlobalDatabase.MainDB.Save(p)
 		Error.HandleError(DB.Error)

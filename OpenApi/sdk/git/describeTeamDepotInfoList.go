@@ -15,13 +15,13 @@ type DescribeTeamDepotInfoListResp struct {
 	Response struct {
 		DepotData struct {
 			Depots []struct {
-				HttpsURL  string `json:"HttpsUrl"`  // http://coding.com/codingcorp/demo/demo.git
-				ID        int64  `json:"Id"`        // 1
-				Name      string `json:"Name"`      // demo
-				ProjectID int64  `json:"ProjectId"` // 450
-				SshURL    string `json:"SshUrl"`    // git@coding.com:codingcorp/demo/demo.git
-				VcsType   string `json:"VcsType"`   // git
-				WebURL    string `json:"WebUrl"`    // http://codingcorp.coding.net/p/demo/d/demo
+				Id        int    `json:"Id"`
+				Name      string `json:"Name"`
+				HttpsUrl  string `json:"HttpsUrl"`
+				ProjectId int    `json:"ProjectId"`
+				SshUrl    string `json:"SshUrl"`
+				WebUrl    string `json:"WebUrl"`
+				VscType   string `json:"VscType"`
 			} `json:"Depots"`
 		} `json:"DepotData"`
 		RequestID string `json:"RequestId"` // ba708820-d6ed-bb70-a628-d25d00a3c1ae

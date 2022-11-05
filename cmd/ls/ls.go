@@ -9,6 +9,7 @@ func init() {
 	cmd.RootCmd.AddCommand(SubCmd)
 	SubCmd.AddCommand(SubCmdProject)
 	SubCmd.AddCommand(SubCmdRepo)
+	SubCmd.AddCommand(SubCmdMember)
 }
 
 // SubCmd is core cobra.Command of subcommand

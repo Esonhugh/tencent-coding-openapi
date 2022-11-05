@@ -28,7 +28,7 @@ func Init(DB string) {
 	GlobalDatabase = new(GlobalDB)
 	GlobalDatabase.MainDB = Open(DB)
 	Error.HandleError(GlobalDatabase.MainDB.AutoMigrate(&define.ProjectObject{}))
-	Error.HandleError(GlobalDatabase.MainDB.AutoMigrate(&define.DeoptObject{}))
+	Error.HandleError(GlobalDatabase.MainDB.AutoMigrate(&define.DepotObject{}))
 	Error.HandleError(GlobalDatabase.MainDB.AutoMigrate(&define.MemberObject{}))
 	log.Println("Database Init Successfully")
 }
