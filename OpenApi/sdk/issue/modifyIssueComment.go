@@ -1,6 +1,8 @@
 package issue
 
-import "github.com/esonhugh/tencent-coding-openapi/OpenApi/baseClient"
+import (
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/define"
+)
 
 type ModifyIssueCommentReq struct {
 	Action      string `json:"Action"`      // CreateIssueComment
@@ -10,7 +12,7 @@ type ModifyIssueCommentReq struct {
 	ProjectName string `json:"ProjectName"` // TestProjectDemo
 }
 
-type ModifyIssueCommentResp baseClient.CommonResponse
+type ModifyIssueCommentResp define.CommonResponse
 
 func (req *ModifyIssueCommentReq) SetAction() string {
 	req.Action = "ModifyIssueComment"

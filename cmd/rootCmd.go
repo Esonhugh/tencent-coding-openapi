@@ -1,7 +1,8 @@
 package cmd
 
 import (
-	"github.com/esonhugh/tencent-coding-openapi/config"
+	"github.com/esonhugh/tencent-coding-openapi/service/config"
+	"github.com/esonhugh/tencent-coding-openapi/service/db"
 	"github.com/esonhugh/tencent-coding-openapi/utils/log"
 	cc "github.com/ivanpirog/coloredcobra"
 	"github.com/spf13/cobra"
@@ -20,14 +21,16 @@ var RootCmd = &cobra.Command{
 	},
 }
 
-var LogLevel, ConfigFile string
+var LogLevel, ConfigFile, DBFile string
 
 func init() {
 	RootCmd.PersistentFlags().StringVar(&LogLevel, "logLevel", "info", "设置日志等级 (Set log level) [trace|debug|info|warn|error|fatal|panic]")
 	RootCmd.PersistentFlags().StringVar(&ConfigFile, "config", "coding.yaml", "设置全局配置文件 (Set config file)")
+	RootCmd.PersistentFlags().StringVar(&DBFile, "db", "cache.sqlite", "设置全局配置文件 (Set config file)")
 	RootCmd.CompletionOptions.DisableDefaultCmd = true
-	config.SpecificInit(ConfigFile)
 	log.Init(LogLevel)
+	config.SpecificInit(ConfigFile)
+	db.Init(DBFile)
 }
 
 func Execute() {

@@ -3,7 +3,7 @@ package config
 import (
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/esonhugh/tencent-coding-openapi/cmd"
-	"github.com/esonhugh/tencent-coding-openapi/config"
+	"github.com/esonhugh/tencent-coding-openapi/service/config"
 	"github.com/esonhugh/tencent-coding-openapi/utils/Error"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"

@@ -1,12 +1,13 @@
 package ls
 
 import (
-	"fmt"
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi"
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi/define"
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/team"
-	"github.com/esonhugh/tencent-coding-openapi/config"
+	"github.com/esonhugh/tencent-coding-openapi/service/config"
+	"github.com/esonhugh/tencent-coding-openapi/service/db"
 	"github.com/esonhugh/tencent-coding-openapi/utils/Error"
-	"github.com/esonhugh/tencent-coding-openapi/utils/Print"
+	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
 
@@ -31,12 +32,11 @@ var SubCmdProject = &cobra.Command{
 			})
 		}
 		Error.HandleError(err)
-
-		var t Print.Table
-		t.Header = []string{"ID", "Name", "DisplayName", "Description"}
-		for _, each := range resp.Response.Data.ProjectList {
-			t.Body = append(t.Body, []string{fmt.Sprintf("%v", each.ID), each.Name, each.DisplayName, each.Description})
-		}
-		t.Print("Project List")
+		p := define.ConvertProjectObjectList(resp.Response.Data.ProjectList)
+		p.PrintSelf()
+		log.Debug("Saving in Database")
+		DB := db.GlobalDatabase.MainDB.Save(p)
+		Error.HandleError(DB.Error)
+		log.Debug("Saved complete")
 	},
 }
