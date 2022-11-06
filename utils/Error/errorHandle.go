@@ -2,7 +2,7 @@ package Error
 
 import log "github.com/sirupsen/logrus"
 
-const ERRORMSG = "GET error != nil"
+const ERRORMSG = "GET error != nil, Error Reason: "
 
 // HandleError is a function to handle error using Errorln, do nothing if error is nil
 func HandleError(e error) {
