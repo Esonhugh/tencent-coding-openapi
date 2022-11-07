@@ -14,7 +14,7 @@ import (
 var SubCmdRepo = &cobra.Command{
 	Use:     "repo",
 	Short:   "列出仓库 (List Repositories)",
-	Long:    "列出仓库 (List Repositories)",
+	Long:    "列出仓库 (List Repositories) 请先执行 ls project 后再执行本命令",
 	Example: "coding-cli ls repo 项目名(Like正则)",
 	Run: func(cmd *cobra.Command, args []string) {
 		token := config.GlobalConfig.GetString("auth.access_token")
