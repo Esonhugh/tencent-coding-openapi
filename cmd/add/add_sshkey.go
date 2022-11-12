@@ -2,7 +2,6 @@ package add
 
 import (
 	"github.com/AlecAivazis/survey/v2"
-	"github.com/esonhugh/tencent-coding-openapi/OpenApi"
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/git"
 	"github.com/esonhugh/tencent-coding-openapi/service/config"
 	"github.com/esonhugh/tencent-coding-openapi/utils/Error"
@@ -15,8 +14,6 @@ var SubCmdSsh = &cobra.Command{
 	Short: "添加 SSH Key (Add SSH Key)",
 	Long:  "添加 SSH Key (Add SSH Key)",
 	Run: func(cmd *cobra.Command, args []string) {
-		token := config.GlobalConfig.GetString("auth.access_token")
-		isOAuth := config.GlobalConfig.GetBool("auth.is_oauth")
 		name := config.GlobalConfig.GetString("ssh.name")
 		sshKey := config.GlobalConfig.GetString("ssh.public_key")
 		for sshKey == "" {
@@ -35,14 +32,13 @@ var SubCmdSsh = &cobra.Command{
 				Error.HandleError(config.Save())
 			}
 		}
-		Client := OpenApi.NewClient()
-		Client.SetToken(isOAuth, token)
 		resp, err := Client.CreateSshKey(git.CreateSshKeyReq{
 			Title:   name,
 			Content: sshKey,
 		})
 		Error.HandlePanic(err)
 		log.Info("添加成功 (Add Successfully)")
+		log.Info("Happy Taking Over it.")
 		log.Info("requestID: ", resp.Response.RequestID)
 		log.Info("key finger print: ", resp.Response.SshKeyInfo.FingerPrint)
 	},

@@ -16,16 +16,20 @@ func init() {
 	SubCmd.AddCommand(SubCmdMyProject)
 }
 
+var Client *OpenApi.Client
+
 // SubCmd is core cobra.Command of subcommand
 var SubCmd = &cobra.Command{
 	Use:   "me",
 	Short: "个人信息 (Print the Personal Info)",
 	Long:  "个人信息 (Print the Personal Info)",
-	Run: func(cmd *cobra.Command, args []string) {
+	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		token := config.GlobalConfig.GetString("auth.access_token")
 		isOAuth := config.GlobalConfig.GetBool("auth.is_oauth")
-		Client := OpenApi.NewClient()
+		Client = OpenApi.NewClient()
 		Client.SetToken(isOAuth, token)
+	},
+	Run: func(cmd *cobra.Command, args []string) {
 		resp, err := Client.GetMe()
 		Error.HandleError(err)
 		var t Print.Table

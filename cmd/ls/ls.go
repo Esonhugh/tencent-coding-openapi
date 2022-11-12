@@ -1,7 +1,9 @@
 package ls
 
 import (
+	"github.com/esonhugh/tencent-coding-openapi/OpenApi"
 	"github.com/esonhugh/tencent-coding-openapi/cmd"
+	"github.com/esonhugh/tencent-coding-openapi/service/config"
 	"github.com/spf13/cobra"
 )
 
@@ -12,6 +14,8 @@ func init() {
 	SubCmd.AddCommand(SubCmdMember)
 }
 
+var Client *OpenApi.Client
+
 // SubCmd is core cobra.Command of subcommand
 var SubCmd = &cobra.Command{
 	Use:   "ls",
@@ -21,5 +25,9 @@ var SubCmd = &cobra.Command{
 		"如果有需要可以直接使用数据库链接软件打开数据库",
 	Example: "ls <object>",
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
+		token := config.GlobalConfig.GetString("auth.access_token")
+		isOAuth := config.GlobalConfig.GetBool("auth.is_oauth")
+		Client = OpenApi.NewClient()
+		Client.SetToken(isOAuth, token)
 	},
 }
