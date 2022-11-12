@@ -1,6 +1,7 @@
 package ls
 
 import (
+	"errors"
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi"
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi/define"
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/team"
@@ -9,6 +10,7 @@ import (
 	"github.com/esonhugh/tencent-coding-openapi/utils/Error"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
+	"os"
 )
 
 var SubCmdMember = &cobra.Command{
@@ -25,6 +27,10 @@ var SubCmdMember = &cobra.Command{
 			PageSize:   10,
 		})
 		Error.HandleError(err)
+		if resp.Response.Data.TotalCount <= 0 {
+			Error.HandleError(errors.New("count is less then one"))
+			os.Exit(1)
+		}
 		if resp.Response.Data.TotalCount > 10 {
 			resp, err = Client.DescribeTeamMembers(team.DescribeTeamMembersReq{
 				PageNumber: 1,

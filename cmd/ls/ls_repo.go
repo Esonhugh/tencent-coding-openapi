@@ -1,6 +1,7 @@
 package ls
 
 import (
+	"errors"
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi"
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi/define"
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi/sdk/git"
@@ -9,6 +10,7 @@ import (
 	"github.com/esonhugh/tencent-coding-openapi/utils/Error"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
+	"os"
 )
 
 var SubCmdRepo = &cobra.Command{
@@ -30,6 +32,10 @@ var SubCmdRepo = &cobra.Command{
 				TeamID: int64(TeamId),
 			})
 			Error.HandleError(err)
+			if len(resp.Response.DepotData.Depots) <= 0 {
+				Error.HandleError(errors.New("count is less then one"))
+				os.Exit(1)
+			}
 			p := define.ConvertDepotObjectList(resp.Response.DepotData.Depots)
 			p.PrintSelf()
 			log.Debug("Saving in Database")
