@@ -1,7 +1,6 @@
 package version
 
 import (
-	"fmt"
 	"github.com/esonhugh/tencent-coding-openapi/OpenApi"
 	"github.com/esonhugh/tencent-coding-openapi/cmd"
 	"github.com/esonhugh/tencent-coding-openapi/service/config"
@@ -32,11 +31,6 @@ var SubCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		resp, err := Client.GetMe()
 		Error.HandleError(err)
-		var t Print.Table
-		t.Header = []string{"姓名 (Name)", "邮箱 (Email)", "用户名 (Username)", "创建时间 (Created At)", "团队 (Team)"}
-		t.Body = append(t.Body, []string{
-			resp.Name, resp.Email, fmt.Sprintf("%v", resp.ID), fmt.Sprintf("%v", resp.CreateAt), resp.Team,
-		})
-		t.Print("")
+		Print.PrintStruct(&resp)
 	},
 }
