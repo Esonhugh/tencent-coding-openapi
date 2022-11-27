@@ -22,6 +22,7 @@ var SubCmdRepo = &cobra.Command{
 		err := DB.Model(define.ProjectObject{}).Distinct("team_id").Find(&TeamIds).Error
 		Error.HandleError(err)
 		for _, TeamId := range TeamIds {
+			log.Info("Team ID: ", TeamId)
 			resp, err := Client.DescribeTeamDepotInfoList(git.DescribeTeamDepotInfoListReq{
 				TeamID: int64(TeamId),
 			})
